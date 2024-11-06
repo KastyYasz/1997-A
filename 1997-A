@@ -1,0 +1,65 @@
+using System;
+using System.Linq;
+
+namespace bbbbb
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string palavra = Console.ReadLine();
+            palavra = palavra.ToLower();
+
+            char[] palavraArray = palavra.ToCharArray();
+
+            for (int i = 0; i < palavraArray.Length - 2; i++)
+            {
+
+                // 3 iguais bota uma antes
+                if (palavraArray[i] == palavraArray[i + 1] && palavraArray[i + 1] == palavraArray[i + 2])
+                {
+                    char letraAtual = palavraArray[i+1];
+                    char proximaLetra = (char)(letraAtual + 1);
+
+                    if (letraAtual == 'z')
+                    {
+                        proximaLetra = 'a';
+                    }
+
+                    palavraArray[i + 1] = proximaLetra;
+
+                    //ignorar a primeira letra e jogar depois 
+                    i += 2;
+                    //duas iguais bota no meio
+                }else if(palavraArray[i]== palavraArray[i+1] && palavra[i+1] != palavraArray[i+2]){
+
+                    char letraAtual = palavraArray[i];
+                    char proximaLetra = (char)(letraAtual + 1);
+
+                    if (letraAtual == 'z')
+                    {
+                        proximaLetra = 'a';
+                    }
+
+                    palavraArray[i + 1] = proximaLetra;
+
+                    i + 2;
+
+
+
+                }
+            }
+
+            string resultado = new string(palavraArray);
+            Console.WriteLine("Resultado: " + resultado);
+            
+
+            // alfabeto
+            char[] az = Enumerable.Range('a', 'z' - 'a' + 1).Select(i => (char)i).ToArray();
+            foreach (var c in az)
+            {
+                Console.WriteLine(c);
+            }
+        }
+    }
+}
